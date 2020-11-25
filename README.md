@@ -1,7 +1,7 @@
 semiproject  
 ----------------------
-###프로젝트명 : Cooking - king
-##### 조원 :  박예빈 김가영 김종완 박준혁 이호근 )
+### 프로젝트명 : Cooking - king
+##### 조원 :  박예빈 김가영 김종완 박준혁 이호근 
 ----------------------
 
 
@@ -14,8 +14,8 @@ semiproject
 > 사용자들에게 편의를 제공하려한다.
 -----------------------
 
-### 주요 테이블 
-
+### 주요 테이블  
+  
 + ALL_USER ( 회원 관리용 테이블 )
   + 시스템에 가입되어있는 회원의 정보를 저장하는 테이블
   + USER_ID COLUMN 을 Primary key로 사용
@@ -41,3 +41,23 @@ semiproject
   + 해당 테이블에서 입력받은 수강 종료 날짜, 지원 종료 날짜는 Oracle schduler를 통해 종료 여부가 체크됨
   + CLASS의 고유 시퀀스값인 CLASS_NO를 Primary Key로 사용
 
+-----------------------
+
+### 주요 기능  (해당 부분은 작성자 본인이 구현한 기능 위주로 작성되었습니다.)
+  
++ 이력서 관리
+  + 회원 가입시 초기 상태는 일반 회원으로 가입되며, 튜터 등급으로 변경을 원할 경우 '이력서 관리' 메뉴를 통해 이력서를 제출, 심사에서 승인을 받게되면 튜터 등급으로 변경이 되게된다.
+  + '이력서 관리' 메뉴를 클릭 시 tutorResume.jsp로 안내를 받게 되고 제공된 form을 통해 이력서를 작성 할 수 있다. 
+  + 해당 jsp에서 '중간 저장' 버튼을 클릭할 경우 TutorWriterResumeServlet을 통해 form이 제출되고, '제출' 버튼을 클릭할 경우 TutorsubmitResumeServlet을 통해 form이 제출된다.
+  + 작성자는 해당 기능에서 TutorsubmitResumeServlet전체와 jsp부분을 작업했습니다.
+  
++ 포인트 관리
+  + 일반 회원의 경우 수업 결제에 사용되어질 포인트와, 튜터 회원의 경우 결제되어진 포인트를 현금으로 환전할 포인트를 관리하는 페이지이다.
+  + '포인트 관리' 메뉴를 클릭 시 pointManagement.jsp로 안내를 받게 된다. 해당 페이지는 현재 로그인되어있는 맴버의 상태에 따라  
+  일반회원일 경우 '포인트 충전'기능만 노출,  튜터회원일 경우 '포인트 충전'과 '포인트 환전'기능을 모두 노출시키도록 분기처리가 되어있다.
+  + '포인트 충전'시 해당 form에 맞는 데이터를 작성 후 버튼을 클릭 하면 PointDepositeServlet으로 제출되며  
+  code1 Point point = new Point(0, userId, "I", null, pointAmount, null);  
+  "I"값을 갖는 point객체를 생성 후 POINT_LOG테이블에 기록된다.
+  + '포인트 환전'시 해당 form에 맞는 데이터를 작성 후 버튼을 클릭 하면 PointExchangeServlet으로 제출되며
+  code2 Point tutorPoint = new Point(0, userId, "O", null, (int)pointAmount, null);  
+  "O"값을 갖는 point객체를 생성 후 POINT_LOG테이블에 기록된다.
