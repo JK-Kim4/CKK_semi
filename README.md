@@ -1,5 +1,5 @@
 
-#Cooking_King
+#Cooking_king
 ##### KH_semiproject ( 박예빈 김가영 김종완 박준혁 이호근 )
 ----------------------
 
