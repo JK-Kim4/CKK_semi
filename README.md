@@ -56,8 +56,12 @@ semiproject
   + '포인트 관리' 메뉴를 클릭 시 pointManagement.jsp로 안내를 받게 된다. 해당 페이지는 현재 로그인되어있는 맴버의 상태에 따라  
   일반회원일 경우 '포인트 충전'기능만 노출,  튜터회원일 경우 '포인트 충전'과 '포인트 환전'기능을 모두 노출시키도록 분기처리가 되어있다.
   + '포인트 충전'시 해당 form에 맞는 데이터를 작성 후 버튼을 클릭 하면 PointDepositeServlet으로 제출되며  
-  code1 Point point = new Point(0, userId, "I", null, pointAmount, null);  
+  '''java
+  Point point = new Point(0, userId, "I", null, pointAmount, null);  
+  '''
   "I"값을 갖는 point객체를 생성 후 POINT_LOG테이블에 기록된다.
-  + '포인트 환전'시 해당 form에 맞는 데이터를 작성 후 버튼을 클릭 하면 PointExchangeServlet으로 제출되며
-  code2 Point tutorPoint = new Point(0, userId, "O", null, (int)pointAmount, null);  
+  + '포인트 환전'시 해당 form에 맞는 데이터를 작성 후 버튼을 클릭 하면 PointExchangeServlet으로 제출되며  
+  '''java
+  Point tutorPoint = new Point(0, userId, "O", null, (int)pointAmount, null);  
+  '''
   "O"값을 갖는 point객체를 생성 후 POINT_LOG테이블에 기록된다.
