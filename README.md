@@ -65,3 +65,28 @@ semiproject
   Point tutorPoint = new Point(0, userId, "O", null, (int)pointAmount, null);  
   ```
   "O"값을 갖는 point객체를 생성 후 POINT_LOG테이블에 기록된다.
+  + 기록된 POINT_LOG의 값은 트리거를 통해 해당 회원의 포인트 총량에 합산되어 계산되어진다.   
+  ```sql
+      CREATE OR REPLACE TRIGGER TRG_POINT_LOG_IO
+        BEFORE
+        INSERT ON POINT_LOG
+        FOR EACH ROW
+    BEGIN
+        IF :NEW.POINT_IO = 'I'
+         THEN
+            UPDATE ALL_USER
+            SET
+                POINT_SUM = POINT_SUM + :NEW.POINT_AMOUNT
+            WHERE
+                USER_ID = :NEW.USER_ID;
+        ELSIF  :NEW.POINT_IO = 'O'
+        THEN
+            UPDATE ALL_USER
+            SET
+                POINT_SUM = POINT_SUM - :NEW.POINT_AMOUNT
+            WHERE
+                USER_ID = :NEW.USER_ID;
+        END IF;
+    END;
+    /
+```
