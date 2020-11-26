@@ -16,6 +16,16 @@ semiproject
 > 사용자들에게 편의를 제공하려한다.
 -----------------------
 
+### 개발 환경
+  
++ 언어 : Java / Javascript / HTML5 / CSS3 / 
++ IDE : Eclipse
++ DB : Oracle
++ Server : Apache tomcat 8.5
++ Liberary : JQurey / OJDBC6 / cos.jar
+
+-----------------------
+
 ### 주요 테이블  
   
 + ALL_USER ( 회원 관리용 테이블 )
