@@ -18,6 +18,7 @@ semiproject
 
 ### 개발 환경
   
++ 운영 체제 : Window 10  
 + 언어 : Java / Javascript / HTML5 / CSS3 / 
 + IDE : Eclipse
 + DB : Oracle
