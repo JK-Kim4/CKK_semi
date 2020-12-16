@@ -88,6 +88,7 @@ public class TutorWriterResumeServlet extends HttpServlet {
 		int result =  0;
 		String msg ="";
 		String loc = "";
+		//저장된 이력서 정보가 존재한다면 -> 덮어쓰기
 		if(tr !=  null ) {
 			result = new TutorService().updateResume(tutorResume, tutorId);
 			if(result > 0) {
@@ -95,7 +96,7 @@ public class TutorWriterResumeServlet extends HttpServlet {
 			}else {
 				msg = "이력서 수정에 실패하였습니다. 다시 시도하여주세요.";			
 			}
-			
+		//저장된 이력서 정보가 존재하지 않는다면 -> 새로 저장	
 		}else {
 			result = new TutorService().writeResume(tutorResume, profileOrg);
 			if(result > 0) {
